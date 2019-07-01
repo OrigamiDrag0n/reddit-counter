@@ -1,0 +1,656 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31602,        648]
+NotebookOptionsPosition[     27968,        597]
+NotebookOutlinePosition[     28314,        612]
+CellTagsIndexPosition[     28271,        609]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fix", "[", "data_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"l", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{
+         "2", ",", "3", ",", "6", ",", "3", ",", "9", ",", "3", ",", "1", ",",
+           "3", ",", "4"}], "]"}], "]"}]}], ",", "find", ",", " ", "stream"}],
+      "}"}], ",", " ", 
+    RowBox[{
+     RowBox[{"find", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"StringPosition", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", "l", "]"}], ",", 
+         "\"\<\\\"accountsActive\\\":\>\""}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ";", 
+     RowBox[{"stream", " ", "=", " ", 
+      RowBox[{"StringToStream", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"Characters", "[", 
+          RowBox[{"ToString", "[", "l", "]"}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{
+           RowBox[{"find", "+", "1"}], ";;", 
+           RowBox[{"find", " ", "+", " ", "10"}]}], "]"}], "]"}], "]"}], 
+       "]"}]}], ";", 
+     RowBox[{"Read", "[", 
+      RowBox[{"stream", ",", " ", "Number"}], "]"}]}]}], "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Imports", " ", "the", " ", "number", " ", "of", " ", "active", " ", 
+    "accounts", " ", "from", " ", "a", " ", "given", " ", "website", " ", 
+    RowBox[{"(", 
+     RowBox[{"a", " ", "subreddit"}], ")"}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7707837738552837`*^9, 
+  3.7707838295532885`*^9}},ExpressionUUID->"edcb824b-7acf-4cde-90b4-\
+233bc4886841"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<reddit_users_2.csv\>\"", ",", "Nothing"}], "]"}]], "Input",
+ CellChangeTimes->{{3.770826827004113*^9, 3.7708268457758045`*^9}, {
+  3.7708665519222345`*^9, 
+  3.7708665521290517`*^9}},ExpressionUUID->"7b6ac20a-bcf1-4bb8-b0e8-\
+96e6a6f7437c"],
+
+Cell[BoxData["\<\"reddit_users_2.csv\"\>"], "Output",
+ CellChangeTimes->{3.770826846587973*^9, 
+  3.770866553855736*^9},ExpressionUUID->"c800defe-d425-4e7b-b618-\
+dad68914f620"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"temp", " ", "=", " ", 
+     RowBox[{"PrintTemporary", "[", "\"\<Waiting...\>\"", "]"}]}], ";"}], 
+   "*)"}], 
+  RowBox[{"While", "[", 
+   RowBox[{"True", ",", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"DateList", "[", "]"}], ",", " ", 
+        RowBox[{"fix", "[", 
+         RowBox[{"Import", "[", 
+          RowBox[{
+          "\"\<https://www.reddit.com/r/dankmemes/\>\"", ",", " ", 
+           "\"\<XMLObject\>\""}], "]"}], "]"}]}], "}"}], "}"}], ">>>", 
+     "\"\<reddit_users_2.csv\>\""}]}], 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"NotebookDelete", "[", "temp", "]"}], ";", 
+     RowBox[{"temp", " ", "=", " ", 
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"DateList", "[", "]"}], "]"}]}]}], "*)"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.770816908121567*^9, 3.7708169093043633`*^9}, {
+   3.77081897672029*^9, 3.7708190022935905`*^9}, {3.7708268555849376`*^9, 
+   3.7708268587717037`*^9}, 3.7708269197875795`*^9, {3.7708665580355873`*^9, 
+   3.770866558301149*^9}},ExpressionUUID->"98c76ec3-ad56-46cc-97f9-\
+36ccac171c91"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "FetchURL","httperr",
+   "\"The request to URL \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"https://www.reddit.com/r/dankmemes/\\\\\\\"\\\"}]\
+\\) was not successful. The server returned the HTTP status code \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"504\\\\\\\"\\\"}]\\).\"",2,7,8,
+   16576530024536532948,"Local","Utilities`URLTools`FetchURL"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770867343187597*^9},ExpressionUUID->"7561b9d9-23ce-4b3b-a5c5-\
+d53ad5906d39"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partd",
+   "\"Part specification \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"2\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \
+\\\"6\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"9\\\", \\\",\\\", \\\"3\\\", \
+\\\",\\\", \\\"1\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"4\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\) is longer than depth of object.\"",2,7,9,
+   16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708673432188396`*^9},ExpressionUUID->"2d440611-1ebe-467c-b2d8-\
+86f59d3cec47"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"1\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"}\\\"}]\\) does not exist.\"",2,7,10,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770867343250082*^9},ExpressionUUID->"208223dd-7bbd-46f6-9470-\
+c3646d9bfdf1"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","span",
+   "\"\\!\\(\\*RowBox[{RowBox[{\\\"1\\\", \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}]\\) is not a valid Span \
+specification. A Span specification should be 1, 2, or 3 integers separated \
+by ;;. (Any of the integers can be omitted or replaced with All.)\"",2,7,11,
+   16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708673432657056`*^9},ExpressionUUID->"e53e0029-a827-49cb-ace9-\
+29f8425a3ebf"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringJoin","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringJoin\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"$\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"F\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"a\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"i\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"l\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"e\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"d\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"6\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"4\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{RowBox[{\\\"1\\\", \\\"+\\\
+\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"\[RightDoubleBracket]\\\
+\"}], \\\"]\\\"}]\\).\"",2,7,12,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770867343296948*^9},ExpressionUUID->"8d9f56c3-ff01-4586-b2d7-\
+2cbdaeb5b327"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringToStream","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringToStream\\\", \\\"[\\\", \
+RowBox[{\\\"StringJoin\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"$\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"F\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"a\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"i\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"l\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"e\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"d\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"6\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"4\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{RowBox[{\\\"1\\\", \\\"+\\\
+\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"\[RightDoubleBracket]\\\
+\"}], \\\"]\\\"}], \\\"]\\\"}]\\).\"",2,7,13,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708673433125715`*^9},ExpressionUUID->"931074e7-c01f-4cb7-a6b7-\
+47efeeadf024"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Read","stream",
+   "\"\\!\\(\\*RowBox[{\\\"$Failed\\\"}]\\) is not a string, SocketObject, \
+InputStream[ ], or OutputStream[ ].\"",2,7,14,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708673434219484`*^9},ExpressionUUID->"b35369e7-9e5a-43c9-ab31-\
+bf675319940f"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "FetchURL","httperr",
+   "\"The request to URL \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"https://www.reddit.com/r/dankmemes/\\\\\\\"\\\"}]\
+\\) was not successful. The server returned the HTTP status code \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"504\\\\\\\"\\\"}]\\).\"",2,7,15,
+   16576530024536532948,"Local","Utilities`URLTools`FetchURL"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770868904113222*^9},ExpressionUUID->"db320fa7-5052-4f13-a1a5-\
+81116c0ea242"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partd",
+   "\"Part specification \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"2\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \
+\\\"6\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"9\\\", \\\",\\\", \\\"3\\\", \
+\\\",\\\", \\\"1\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"4\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\) is longer than depth of object.\"",2,7,16,
+   16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708689041551085`*^9},ExpressionUUID->"c18a2de7-4189-46ba-9729-\
+c2d19a3921a6"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"1\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"}\\\"}]\\) does not exist.\"",2,7,17,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708689041920104`*^9},ExpressionUUID->"10c3a724-207c-47c6-ad43-\
+35346d806da0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","span",
+   "\"\\!\\(\\*RowBox[{RowBox[{\\\"1\\\", \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}]\\) is not a valid Span \
+specification. A Span specification should be 1, 2, or 3 integers separated \
+by ;;. (Any of the integers can be omitted or replaced with All.)\"",2,7,18,
+   16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770868904230906*^9},ExpressionUUID->"cbc39af6-43c4-45df-9b46-\
+aae5f9120dc7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringJoin","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringJoin\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"$\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"F\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"a\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"i\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"l\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"e\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"d\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"6\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"4\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{RowBox[{\\\"1\\\", \\\"+\\\
+\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"\[RightDoubleBracket]\\\
+\"}], \\\"]\\\"}]\\).\"",2,7,19,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770868904256867*^9},ExpressionUUID->"e9a6d899-4407-4ca5-9412-\
+9e9d61eac4ea"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringToStream","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringToStream\\\", \\\"[\\\", \
+RowBox[{\\\"StringJoin\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"$\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"F\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"a\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"i\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"l\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"e\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"d\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"6\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"4\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{RowBox[{\\\"1\\\", \\\"+\\\
+\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"\[RightDoubleBracket]\\\
+\"}], \\\"]\\\"}], \\\"]\\\"}]\\).\"",2,7,20,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708689042967653`*^9},ExpressionUUID->"4be7dcd4-b5fa-4fef-855a-\
+4df2dbc767b7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Read","stream",
+   "\"\\!\\(\\*RowBox[{\\\"$Failed\\\"}]\\) is not a string, SocketObject, \
+InputStream[ ], or OutputStream[ ].\"",2,7,21,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.77086890432067*^9},ExpressionUUID->"a47f8161-7122-4998-b214-0c0d0b2ef64e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "FetchURL","httperr",
+   "\"The request to URL \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"https://www.reddit.com/r/dankmemes/\\\\\\\"\\\"}]\
+\\) was not successful. The server returned the HTTP status code \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"504\\\\\\\"\\\"}]\\).\"",2,7,22,
+   16576530024536532948,"Local","Utilities`URLTools`FetchURL"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710036542606`*^9},ExpressionUUID->"c138fd33-21a5-43be-b357-\
+6602e09b90c7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FetchURL\\\", \
+\\\"::\\\", \\\"httperr\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,7,23,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710037280617`*^9},ExpressionUUID->"34c3d425-0417-48e2-ae53-\
+cd8fc0c517b5"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partd",
+   "\"Part specification \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\
+\[LeftDoubleBracket]\\\", RowBox[{\\\"2\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \
+\\\"6\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"9\\\", \\\",\\\", \\\"3\\\", \
+\\\",\\\", \\\"1\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"4\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\) is longer than depth of object.\"",2,7,24,
+   16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770871003818819*^9},ExpressionUUID->"2086ded5-5c6b-4781-b266-\
+c5ad7c34a742"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partd\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,7,25,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770871003881652*^9},ExpressionUUID->"2432d943-c5d4-4134-8bf4-\
+fb6d04f86b93"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"1\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"}\\\"}]\\) does not exist.\"",2,7,26,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770871003960441*^9},ExpressionUUID->"192b7009-e811-46fb-beb5-\
+17b8a9616f84"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partw\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,7,27,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710040192842`*^9},ExpressionUUID->"307f38d2-b383-425e-ae50-\
+27abe8881e27"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","span",
+   "\"\\!\\(\\*RowBox[{RowBox[{\\\"1\\\", \\\"+\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}]\\) is not a valid Span \
+specification. A Span specification should be 1, 2, or 3 integers separated \
+by ;;. (Any of the integers can be omitted or replaced with All.)\"",2,7,28,
+   16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770871004081155*^9},ExpressionUUID->"e98d1e16-9542-4ade-9413-\
+c03f8a6c36e7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"span\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,7,29,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710041449566`*^9},ExpressionUUID->"3bc6eb42-35ce-449e-a02d-\
+2e7473b68c53"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringJoin","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringJoin\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"$\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"F\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"a\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"i\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"l\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"e\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"d\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"6\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"4\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{RowBox[{\\\"1\\\", \\\"+\\\
+\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"\[RightDoubleBracket]\\\
+\"}], \\\"]\\\"}]\\).\"",2,7,30,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770871004224735*^9},ExpressionUUID->"9be36bb3-7bde-485e-9563-\
+3f979bd8de1f"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringJoin\\\", \
+\\\"::\\\", \\\"string\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,7,31,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710042855816`*^9},ExpressionUUID->"af8ed3a0-46da-4392-b0a1-\
+6e308b13530d"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringToStream","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"StringToStream\\\", \\\"[\\\", \
+RowBox[{\\\"StringJoin\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"$\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"F\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"a\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"i\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"l\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"e\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"d\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"[\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"2\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"6\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"9\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"1\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"3\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"4\\\\\\\"\\\", \
+\\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"]\\\\\\\"\\\"}], \
+\\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{RowBox[{\\\"1\\\", \\\"+\\\
+\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \
+RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}], \
+\\\";;\\\", RowBox[{\\\"10\\\", \\\"+\\\", RowBox[{RowBox[{\\\"{\\\", \\\"}\\\
+\"}], \\\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\"}], \\\"\[RightDoubleBracket]\\\"}]}]}], \\\"\[RightDoubleBracket]\\\
+\"}], \\\"]\\\"}], \\\"]\\\"}]\\).\"",2,7,32,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710043663416`*^9},ExpressionUUID->"ebd184ea-ce23-47b3-b48a-\
+264e2c024559"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringToStream\\\", \
+\\\"::\\\", \\\"string\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,7,33,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710044291973`*^9},ExpressionUUID->"c124c330-68ea-4968-a521-\
+ad85c0bae69a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Read","stream",
+   "\"\\!\\(\\*RowBox[{\\\"$Failed\\\"}]\\) is not a string, SocketObject, \
+InputStream[ ], or OutputStream[ ].\"",2,7,34,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710044880157`*^9},ExpressionUUID->"bebb5a1d-0b69-469b-a2e7-\
+c8b699e0f547"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Read\\\", \\\"::\\\", \
+\\\"stream\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,7,35,16576530024536532948,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.7708710045488715`*^9},ExpressionUUID->"d124493d-b37d-439c-ab91-\
+65afee5744a9"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Read","readn",
+   "\"Invalid real number found when reading from \
+\\!\\(\\*RowBox[{\\\"StringToStream\\\", \\\"[\\\", \\\"\\\\\\\"null,\\\\\\\\\
+\\\\\\\"adve\\\\\\\"\\\", \\\"]\\\"}]\\).\"",2,7,36,16576530024536532948,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7708279829249587`*^9, 
+  3.770886774683464*^9},ExpressionUUID->"4774c950-d989-4563-8368-\
+034f0e7bd092"],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.7708269651164203`*^9, 3.7708665486634655`*^9, 
+  3.770957807394414*^9},ExpressionUUID->"d4afb228-cd9c-4297-8cc1-\
+6d64668616dd"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ClearSystemCache", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.770826967702981*^9, 
+  3.77082697423437*^9}},ExpressionUUID->"52a31148-5018-454f-8eb4-\
+7ed65991527a"]
+},
+WindowSize->{766, 360},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1631, 44, 105, "Input",ExpressionUUID->"edcb824b-7acf-4cde-90b4-233bc4886841"],
+Cell[CellGroupData[{
+Cell[2214, 68, 294, 6, 28, "Input",ExpressionUUID->"7b6ac20a-bcf1-4bb8-b0e8-96e6a6f7437c"],
+Cell[2511, 76, 177, 3, 32, "Output",ExpressionUUID->"c800defe-d425-4e7b-b618-dad68914f620"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2725, 84, 1156, 30, 105, "Input",ExpressionUUID->"98c76ec3-ad56-46cc-97f9-36ccac171c91"],
+Cell[3884, 116, 519, 11, 39, "Message",ExpressionUUID->"7561b9d9-23ce-4b3b-a5c5-d53ad5906d39"],
+Cell[4406, 129, 620, 12, 21, "Message",ExpressionUUID->"2d440611-1ebe-467c-b2d8-86f59d3cec47"],
+Cell[5029, 143, 361, 8, 23, "Message",ExpressionUUID->"208223dd-7bbd-46f6-9470-c3646d9bfdf1"],
+Cell[5393, 153, 831, 15, 41, "Message",ExpressionUUID->"e53e0029-a827-49cb-ace9-29f8425a3ebf"],
+Cell[6227, 170, 1983, 29, 41, "Message",ExpressionUUID->"8d9f56c3-ff01-4586-b2d7-2cbdaeb5b327"],
+Cell[8213, 201, 2047, 30, 41, "Message",ExpressionUUID->"931074e7-c01f-4cb7-a6b7-47efeeadf024"],
+Cell[10263, 233, 370, 8, 23, "Message",ExpressionUUID->"b35369e7-9e5a-43c9-ab31-bf675319940f"],
+Cell[10636, 243, 520, 11, 39, "Message",ExpressionUUID->"db320fa7-5052-4f13-a1a5-81116c0ea242"],
+Cell[11159, 256, 621, 12, 21, "Message",ExpressionUUID->"c18a2de7-4189-46ba-9729-c2d19a3921a6"],
+Cell[11783, 270, 363, 8, 23, "Message",ExpressionUUID->"10c3a724-207c-47c6-ad43-35346d806da0"],
+Cell[12149, 280, 829, 15, 41, "Message",ExpressionUUID->"cbc39af6-43c4-45df-9b46-aae5f9120dc7"],
+Cell[12981, 297, 1983, 29, 41, "Message",ExpressionUUID->"e9a6d899-4407-4ca5-9412-9e9d61eac4ea"],
+Cell[14967, 328, 2047, 30, 41, "Message",ExpressionUUID->"4be7dcd4-b5fa-4fef-855a-4df2dbc767b7"],
+Cell[17017, 360, 365, 7, 23, "Message",ExpressionUUID->"a47f8161-7122-4998-b214-0c0d0b2ef64e"],
+Cell[17385, 369, 522, 11, 39, "Message",ExpressionUUID->"c138fd33-21a5-43be-b357-6602e09b90c7"],
+Cell[17910, 382, 429, 9, 21, "Message",ExpressionUUID->"34c3d425-0417-48e2-ae53-cd8fc0c517b5"],
+Cell[18342, 393, 619, 12, 21, "Message",ExpressionUUID->"2086ded5-5c6b-4781-b266-c5ad7c34a742"],
+Cell[18964, 407, 421, 9, 21, "Message",ExpressionUUID->"2432d943-c5d4-4134-8bf4-fb6d04f86b93"],
+Cell[19388, 418, 361, 8, 23, "Message",ExpressionUUID->"192b7009-e811-46fb-beb5-17b8a9616f84"],
+Cell[19752, 428, 423, 9, 21, "Message",ExpressionUUID->"307f38d2-b383-425e-ae50-27abe8881e27"],
+Cell[20178, 439, 829, 15, 41, "Message",ExpressionUUID->"e98d1e16-9542-4ade-9413-c03f8a6c36e7"],
+Cell[21010, 456, 422, 9, 21, "Message",ExpressionUUID->"3bc6eb42-35ce-449e-a02d-2e7473b68c53"],
+Cell[21435, 467, 1983, 29, 41, "Message",ExpressionUUID->"9be36bb3-7bde-485e-9563-3f979bd8de1f"],
+Cell[23421, 498, 430, 9, 21, "Message",ExpressionUUID->"af8ed3a0-46da-4392-b0a1-6e308b13530d"],
+Cell[23854, 509, 2047, 30, 41, "Message",ExpressionUUID->"ebd184ea-ce23-47b3-b48a-264e2c024559"],
+Cell[25904, 541, 434, 9, 21, "Message",ExpressionUUID->"c124c330-68ea-4968-a521-ad85c0bae69a"],
+Cell[26341, 552, 370, 8, 23, "Message",ExpressionUUID->"bebb5a1d-0b69-469b-a2e7-c8b699e0f547"],
+Cell[26714, 562, 424, 9, 21, "Message",ExpressionUUID->"d124493d-b37d-439c-ab91-65afee5744a9"],
+Cell[27141, 573, 431, 10, 23, "Message",ExpressionUUID->"4774c950-d989-4563-8368-034f0e7bd092"],
+Cell[27575, 585, 185, 3, 32, "Output",ExpressionUUID->"d4afb228-cd9c-4297-8cc1-6d64668616dd"]
+}, Open  ]],
+Cell[27775, 591, 189, 4, 28, "Input",ExpressionUUID->"52a31148-5018-454f-8eb4-7ed65991527a"]
+}
+]
+*)
+
